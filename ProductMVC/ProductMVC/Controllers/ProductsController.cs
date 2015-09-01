@@ -20,11 +20,6 @@ namespace ProductMVC.Controllers
             return View(db.Products.ToList());
         }
 
-        public ActionResult UserIndex()
-        {
-            return View(db.Products.ToList());
-        }
-
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {

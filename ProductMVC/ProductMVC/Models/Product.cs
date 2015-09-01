@@ -15,8 +15,6 @@ namespace ProductMVC.Models
             [DisplayName ("Article Number")]
             public long ArticleNumber { get; set; }
             //public string ImageURL { get; set; }
-            [BindableAttribute(true)]
-            public virtual string ImageUrl { get; set; }
     }
         public class ProductDbContext : DbContext
         {
