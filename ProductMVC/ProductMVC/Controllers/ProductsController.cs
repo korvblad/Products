@@ -6,9 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using ProductMVC.Models;
 
-namespace ProductMVC.Controllers
+namespace ProductMVC.Models
 {
     public class ProductsController : Controller
     {
