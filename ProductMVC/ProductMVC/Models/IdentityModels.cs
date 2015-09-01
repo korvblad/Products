@@ -29,5 +29,7 @@ namespace ProductMVC.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<ProductMVC.Models.Product> Products { get; set; }
     }
 }
