@@ -6,8 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using ProductMVC.Models;
 
-namespace ProductMVC.Models
+namespace ProductMVC.Controllers
 {
     public class ProductsController : Controller
     {
@@ -45,7 +46,7 @@ namespace ProductMVC.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Price,ArticleNumber")] Product product)
+        public ActionResult Create([Bind(Include = "ID,Name,Price,ArticleNumber,ImageUrl")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +78,7 @@ namespace ProductMVC.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Price,ArticleNumber")] Product product)
+        public ActionResult Edit([Bind(Include = "ID,Name,Price,ArticleNumber,ImageUrl")] Product product)
         {
             if (ModelState.IsValid)
             {

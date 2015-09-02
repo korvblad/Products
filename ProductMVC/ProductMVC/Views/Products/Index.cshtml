@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<ProductMVC.Models.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Produkter";
 }
 
-<h2>Index</h2>
+<h2>Produkter</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Skapa ny", "Create")
 </p>
 <table class="table">
     <tr>
@@ -19,6 +19,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ArticleNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
         </th>
         <th></th>
     </tr>
@@ -34,10 +37,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.ArticleNumber)
         </td>
+        <td> 
+            <img width="150" height="75" src="@Url.Content(item.ImageUrl)" />
+        </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Ändra", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Detaljer", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Ta bort", "Delete", new { id=item.ID })
         </td>
     </tr>
 }
