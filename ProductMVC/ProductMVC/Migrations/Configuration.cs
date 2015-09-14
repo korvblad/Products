@@ -10,7 +10,6 @@ namespace ProductMVC.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "ProductMVC.Models.ProductDbContext";
         }
 
         protected override void Seed(ProductMVC.Models.ProductDbContext context)

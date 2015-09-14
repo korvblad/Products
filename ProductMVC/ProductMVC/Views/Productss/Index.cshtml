@@ -1,15 +1,17 @@
 ﻿@model IEnumerable<ProductMVC.Models.Product>
 
 @{
-    ViewBag.Title = "Produkter";
+    ViewBag.Title = "Index";
 }
 
-<h2>Produkter</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Skapa ny", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
+
+
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -22,6 +24,12 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
         </th>
         <th></th>
     </tr>
@@ -37,13 +45,19 @@
         <td>
             @Html.DisplayFor(modelItem => item.ArticleNumber)
         </td>
-        <td> 
-            <img width="150" height="75" src="@Url.Content(item.ImageUrl)" />
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageUrl)
         </td>
         <td>
-            @Html.ActionLink("Ändra", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Detaljer", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Ta bort", "Delete", new { id=item.ID })
+            @Html.DisplayFor(modelItem => item.Genre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
 }

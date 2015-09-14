@@ -10,133 +10,107 @@ using ProductMVC.Models;
 
 namespace ProductMVC.Controllers
 {
-    public class ProductsController : Controller
+    public class AdminsController : Controller
     {
         private ProductDbContext db = new ProductDbContext();
 
-        // GET: Products
-        //public ActionResult Index()
-        //{
-        //    return View(db.Products.ToList());
-        //}
-        
-
-        //GET: Products save
-        public ActionResult Index(string searchString)
+        // GET: Admins
+        public ActionResult Index()
         {
-            var products = from p in db.Products
-                         select p;
-
-            ViewBag.Categories = db.Category.OrderBy(c => c.Name).ToList();
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                products = products.Where(s => s.Name.Contains(searchString));
-            }
-            return View(products);
-            //return View(db.Product.Include(c => c.Category).ToList());
+            return View(db.Admins.ToList());
         }
 
-
-        // GET: Products/Details/5
+        // GET: Admins/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            Admin admin = db.Admins.Find(id);
+            if (admin == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(admin);
         }
 
-        // GET: Products/Create
-        [Authorize(Users = "admin@admin.se")]
+        // GET: Admins/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Products/Create
+        // POST: Admins/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Users="admin@admin.se")]
-        public ActionResult Create([Bind(Include = "ID,Name,Price,ArticleNumber,ImageUrl")] Product product)
+        public ActionResult Create([Bind(Include = "Id,Name")] Admin admin)
         {
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
+                db.Admins.Add(admin);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(product);
+            return View(admin);
         }
 
-        // GET: Products/Edit/5
-     [Authorize(Users = "admin@admin.se")]
+        // GET: Admins/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            Admin admin = db.Admins.Find(id);
+            if (admin == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(admin);
         }
 
-        // POST: Products/Edit/5
+        // POST: Admins/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Users = "admin@admin.se")]
-        public ActionResult Edit([Bind(Include = "ID,Name,Price,ArticleNumber,ImageUrl")] Product product)
+        public ActionResult Edit([Bind(Include = "Id,Name")] Admin admin)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                db.Entry(admin).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(product);
+            return View(admin);
         }
 
-
-        // GET: Products/Delete/5
-        [Authorize(Users = "admin@admin.se")]
+        // GET: Admins/Delete/5
         public ActionResult Delete(int? id)
-
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            Admin admin = db.Admins.Find(id);
+            if (admin == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(admin);
         }
 
-        // POST: Products/Delete/5
+        // POST: Admins/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Users = "admin@admin.se")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
+            Admin admin = db.Admins.Find(id);
+            db.Admins.Remove(admin);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

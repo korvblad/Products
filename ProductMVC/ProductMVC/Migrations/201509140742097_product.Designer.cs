@@ -7,13 +7,13 @@ namespace ProductMVC.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ImageUrl : IMigrationMetadata
+    public sealed partial class product : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ImageUrl));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(product));
         
         string IMigrationMetadata.Id
         {
-            get { return "201509020738081_ImageUrl"; }
+            get { return "201509140742097_product"; }
         }
         
         string IMigrationMetadata.Source
