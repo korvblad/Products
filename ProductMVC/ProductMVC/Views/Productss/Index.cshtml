@@ -46,8 +46,12 @@
             @Html.DisplayFor(modelItem => item.ArticleNumber)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ImageUrl)
+            <img width="105" height="105" src="@Url.Content(item.ImageUrl)" />
         </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ImageUrl)
+
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Genre)
         </td>
