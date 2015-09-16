@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Produkter</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -28,9 +28,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Genre)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.CategoryId)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -51,9 +51,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Genre)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.CategoryId)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |

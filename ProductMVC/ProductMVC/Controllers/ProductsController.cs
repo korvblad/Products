@@ -21,7 +21,7 @@ namespace ProductMVC.Controllers
         //}
         
 
-        //GET: Products save
+        //GET: Products save + index
         public ActionResult Index(string searchString)
         {
             var products = from p in db.Products
