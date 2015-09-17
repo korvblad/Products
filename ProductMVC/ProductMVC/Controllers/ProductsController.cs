@@ -14,24 +14,24 @@ namespace ProductMVC.Controllers
     {
         private ProductDbContext db = new ProductDbContext();
 
-        // GET: Products
-        //public ActionResult Index()
-        //{
-        //    return View(db.Products.ToList());
-        //}
-        
+        ////GET: Products
+        ////public ActionResult Index()
+        ////{
+        ////    return View(db.Products.ToList());
+        ////}
 
-        //GET: Products save + index
-        public ActionResult Index(string searchString)
+
+        //GET: Products search + index
+        public ActionResult Index(string SearchString)
         {
             var products = from p in db.Products
-                         select p;
+                           select p;
 
-            ViewBag.Categories = db.Category.OrderBy(c => c.Name).ToList();
+            //ViewBag.Categories = db.Category.OrderBy(c => c.Name).ToList();
 
-            if (!String.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(SearchString))
             {
-                products = products.Where(s => s.Name.Contains(searchString));
+                products = products.Where(s => s.Name.Contains(SearchString));
             }
             return View(products);
             //return View(db.Product.Include(c => c.Category).ToList());
@@ -65,7 +65,7 @@ namespace ProductMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Users="admin@admin.se")]
+        [Authorize(Users = "admin@admin.se")]
         public ActionResult Create([Bind(Include = "ID,Name,Price,ArticleNumber,ImageUrl")] Product product)
         {
             if (ModelState.IsValid)
@@ -79,7 +79,7 @@ namespace ProductMVC.Controllers
         }
 
         // GET: Products/Edit/5
-     [Authorize(Users = "admin@admin.se")]
+        [Authorize(Users = "admin@admin.se")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -115,7 +115,6 @@ namespace ProductMVC.Controllers
         // GET: Products/Delete/5
         [Authorize(Users = "admin@admin.se")]
         public ActionResult Delete(int? id)
-
         {
             if (id == null)
             {

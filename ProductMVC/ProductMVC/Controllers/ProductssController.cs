@@ -15,9 +15,29 @@ namespace ProductMVC.Views
         private ProductDbContext db = new ProductDbContext();
 
         // GET: Productss
-        public ActionResult Index()
+        public ActionResult Index(string SearchGenre, string SearchString)
         {
-            return View(db.Products.ToList());
+            var GenreLst = new List<string>();
+            var GenreQry = from d in db.Products
+                           orderby d.Genre
+                           select d.Genre;
+
+            GenreLst.AddRange(GenreQry.Distinct());
+            ViewBag.SearchGenre = new SelectList(GenreLst);
+
+            var products = from p in db.Products
+                           select p;
+
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                products = products.Where(s => s.Name.Contains(SearchString));
+            }
+            
+            if(!string.IsNullOrEmpty(SearchGenre))
+            {
+                products = products.Where(x => x.Genre == SearchGenre);
+            }
+            return View(products);
         }
 
         // GET: Productss/Details/5
@@ -36,7 +56,9 @@ namespace ProductMVC.Views
         }
 
         // GET: Productss/Create
+        [Authorize(Users = "admin@admin.se")]
         public ActionResult Create()
+
         {
             return View();
         }
@@ -45,6 +67,7 @@ namespace ProductMVC.Views
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Users = "admin@admin.se")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,Price,ArticleNumber,ImageUrl,Genre,CategoryId")] Product product)
         {
@@ -59,6 +82,7 @@ namespace ProductMVC.Views
         }
 
         // GET: Productss/Edit/5
+        [Authorize(Users = "admin@admin.se")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +102,7 @@ namespace ProductMVC.Views
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Users = "admin@admin.se")]
         public ActionResult Edit([Bind(Include = "ID,Name,Price,ArticleNumber,ImageUrl,Genre,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
@@ -90,7 +115,9 @@ namespace ProductMVC.Views
         }
 
         // GET: Productss/Delete/5
+        [Authorize(Users = "admin@admin.se")]
         public ActionResult Delete(int? id)
+
         {
             if (id == null)
             {
@@ -107,6 +134,7 @@ namespace ProductMVC.Views
         // POST: Productss/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Users = "admin@admin.se")]
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Products.Find(id);

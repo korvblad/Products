@@ -8,6 +8,16 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+
+    @using (Html.BeginForm())
+    {
+    <p>
+        Namn: @Html.TextBox("SearchString") 
+        Genre: @Html.DropDownList("SearchGenre", "All")
+        <input type="submit" value="Sök..." />
+    </p>
+    }
+    
 </p>
 <table class="table">
 
