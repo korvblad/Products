@@ -186,6 +186,10 @@
     <Compile Include="Migrations\201509140742097_product.Designer.cs">
       <DependentUpon>201509140742097_product.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201509170800247_Kebab.cs" />
+    <Compile Include="Migrations\201509170800247_Kebab.Designer.cs">
+      <DependentUpon>201509170800247_Kebab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -279,6 +283,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201509140742097_product.resx">
       <DependentUpon>201509140742097_product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509170800247_Kebab.resx">
+      <DependentUpon>201509170800247_Kebab.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

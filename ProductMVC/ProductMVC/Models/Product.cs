@@ -15,7 +15,7 @@ namespace ProductMVC.Models
             public string Name {get;set;}
             public int ID {get;set;}
             [DisplayName("Pris")]
-            public float Price { get; set; }
+            public decimal Price { get; set; }
             [DisplayName ("Artikelnummer")]
             public long ArticleNumber { get; set; }
             [BindableAttribute(true)]
