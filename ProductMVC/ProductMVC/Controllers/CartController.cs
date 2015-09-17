@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace ProductMVC.Controllers
 {
     public class CartController : Controller
@@ -15,6 +16,16 @@ namespace ProductMVC.Controllers
         {
             repository = repo;
         }
+        //Index action method
+        public ViewResult Index(string returnUrl)
+        {
+            return View(new CartIndexViewModel
+                {
+                    Cart = GetCart(),
+                    ReturnUrl = returnUrl
+                });
+        }
+
         public RedirectToRouteResult AddToCart(int id, string returnUrl)
         {
             Product product = repository.Products
@@ -24,7 +35,7 @@ namespace ProductMVC.Controllers
             {
                 GetCart().AddItem(product, 1);
             }
-            return RedirectToAction("Index", new object { returnUrl });
+            return RedirectToAction("Index", new { returnUrl });
         }
         public RedirectToRouteResult RemoveFromCart(int id, string returnUrl)
         {
@@ -34,7 +45,7 @@ namespace ProductMVC.Controllers
             {
                 GetCart().RemoveLine(product);
             }
-            return RedirectToAction("Index", new object { returnUrl });
+            return RedirectToAction("Index", new { returnUrl });
         }
         private Cart GetCart()
         {

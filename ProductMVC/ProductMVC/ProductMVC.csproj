@@ -191,10 +191,19 @@
     <Compile Include="Migrations\201509170800247_Kebab.Designer.cs">
       <DependentUpon>201509170800247_Kebab.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201509171032591_aegd.cs" />
+    <Compile Include="Migrations\201509171032591_aegd.Designer.cs">
+      <DependentUpon>201509171032591_aegd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201509171043092_olof.cs" />
+    <Compile Include="Migrations\201509171043092_olof.Designer.cs">
+      <DependentUpon>201509171043092_olof.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\CartIndexViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Product.cs" />
@@ -223,7 +232,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -270,6 +281,7 @@
     <Content Include="Views\Productss\Edit.cshtml" />
     <Content Include="Views\Productss\Index.cshtml" />
     <Content Include="Views\Shared\View.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -288,6 +300,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201509170800247_Kebab.resx">
       <DependentUpon>201509170800247_Kebab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509171032591_aegd.resx">
+      <DependentUpon>201509171032591_aegd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509171043092_olof.resx">
+      <DependentUpon>201509171043092_olof.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

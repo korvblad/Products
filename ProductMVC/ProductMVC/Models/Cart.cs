@@ -46,7 +46,7 @@ namespace ProductMVC.Models
             get { return lineCollection; }
         }
     }
-    
+
     public class CartLine
     {
         public Product Product { get; set; }

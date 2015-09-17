@@ -21,14 +21,14 @@
 
     </p>
 @* omg kanske ta bort detta under för det verkar inte vilja sig va *@
-    @using (Html.BeginForm("AddToCart", "Cart"))
+    @*@using (Html.BeginForm("AddToCart", "Cart"))
     {
         <div class="pull-right">
             @Html.HiddenFor(x => x.ID)
             @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
             <input type="submit" class="btn btn-success" value="Add To Cart" />
         </div>
-    }
+    }*@
 
     <table class="table">
 
