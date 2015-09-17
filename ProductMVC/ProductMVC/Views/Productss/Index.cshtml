@@ -12,68 +12,80 @@
     @using (Html.BeginForm())
     {
     <p>
-        Namn: @Html.TextBox("SearchString") 
+        Namn: @Html.TextBox("SearchString")
         Genre: @Html.DropDownList("SearchGenre", "All")
         <input type="submit" value="Sök..." />
     </p>
     }
-    
-</p>
-<table class="table">
 
 
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ArticleNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Genre)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </th>*@
-        <th></th>
-    </tr>
+    </p>
+@* omg kanske ta bort detta under för det verkar inte vilja sig va *@
+    @using (Html.BeginForm("AddToCart", "Cart"))
+    {
+        <div class="pull-right">
+            @Html.HiddenFor(x => x.ID)
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <input type="submit" class="btn btn-success" value="Add To Cart" />
+        </div>
+    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArticleNumber)
-        </td>
-        <td>
-            <img width="105" height="105" src="@Url.Content(item.ImageUrl)" />
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.ImageUrl)
+    <table class="table">
 
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Genre)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.CategoryId)
-        </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
 
-</table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArticleNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.CategoryId)
+                </th>*@
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArticleNumber)
+                </td>
+                <td>
+                    <img width="105" height="105" src="@Url.Content(item.ImageUrl)" />
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.ImageUrl)
+
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.CategoryId)
+                    </td>*@
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
