@@ -131,6 +131,18 @@ namespace ProductMVC.Views
             return View(product);
         }
 
+        public Cart NewSession() // skapar en ref objekt av ett Session Objekt till att lagra gissningar
+        {
+            var CartItems = Session["savedList"] as Cart;
+
+            if (CartItems == null)
+            {
+                CartItems = new Cart();
+                Session["savedList"] = CartItems;
+            }
+            return CartItems;
+        }
+
         // POST: Productss/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

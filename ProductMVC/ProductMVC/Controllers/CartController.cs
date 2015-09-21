@@ -1,4 +1,6 @@
-﻿using ProductMVC.Models;
+﻿
+using ProductMVC.Abstract;
+using ProductMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +12,9 @@ namespace ProductMVC.Controllers
 {
     public class CartController : Controller
     {
-        private ProductDbContext repository;
+        private ProductDbContext db = new ProductDbContext();
 
-        public CartController(ProductDbContext repo)
-        {
-            repository = repo;
-        }
+       
         //Index action method
         public ViewResult Index(string returnUrl)
         {
@@ -28,7 +27,7 @@ namespace ProductMVC.Controllers
 
         public RedirectToRouteResult AddToCart(int id, string returnUrl)
         {
-            Product product = repository.Products
+            Product product = db.Products
                 .FirstOrDefault(p => p.ID == id);
 
             if (product != null)
@@ -39,7 +38,7 @@ namespace ProductMVC.Controllers
         }
         public RedirectToRouteResult RemoveFromCart(int id, string returnUrl)
         {
-            Product product = repository.Products
+            Product product = db.Products
                 .FirstOrDefault(p => p.ID == id);
             if (product != null)
             {
@@ -57,6 +56,9 @@ namespace ProductMVC.Controllers
             }
             return cart;
         }
-
+        public PartialViewResult Summary(Cart cart)
+        {
+            return PartialView(GetCart());
+        }
    } 
 }

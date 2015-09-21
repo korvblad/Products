@@ -1,0 +1,26 @@
+﻿@model ProductMVC.Models.Product
+
+@{
+    ViewBag.Title = "AddToCart";
+}
+
+<h2>AddToCart</h2>
+
+<div class="well">
+    <h3>
+        <strong>@Model.Name</strong>
+        <span class="pull-right label labelprimary">
+            @Model.Price.ToString("c")
+        </span>
+    </h3>
+    @using (Html.BeginForm("AddToCart", "Cart"))
+    {
+        <div class="pull-right">
+            @Html.HiddenFor(x => x.ID)
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <input type="submit" class="btn btn-success" value="Add to
+cart" />
+        </div>
+    }
+    <span class="lead"> @Model.ArticleNumber</span>
+</div>

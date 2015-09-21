@@ -6,29 +6,30 @@
 <h2>Din kundvagn</h2>
 
 <table class="table">
-    <thead>
-        <tr>
-            <th>Quantity</th>
-            <th>Item</th>
-            <th class="text-right">Price</th>
-            <th class="text-right">Subtotal</th>
-        </tr>
-    </thead>
-    <tbody>
+<thead>
+    <tr>
+        <th class="text-center">Antal</th>
+        <th>Namn</th>
+        <th class="text-right">Pris</th>
+        <th class="text-right">Summa</th>
+    </tr>
+</thead>
 
         @foreach (var line in Model.Cart.Lines)
         {
             <tr>
-                </td>
                 <td class="text-center">@line.Quantity</td>
                 <td class="text-left">@line.Product.Name</td>
-                <td class="text-right">@line.Product.Price.ToString("c")
+                <td class="text-right">@line.Product.Price.ToString("c")</td>
                 <td class="text-right">
                     @((line.Quantity * line.Product.Price).ToString("c"))
                 </td>
+                <td class="text-right">
+                    @Html.ActionLink("Remove Item", "RemoveFromCart", "Cart", new { id = line.Product.ID }, null) |
+                </td>
             </tr>
         }
-    </tbody>
+    
     <tfoot>
         <tr>
             <td colspan="3" class="text-right">Total:</td>
@@ -42,7 +43,8 @@
 </table>
 
 <div class="text-center">
+    <div class="btn btn-primary" style="background-color: rgba(44, 215, 205, 0.44)">
+        @Html.ActionLink("Continue shopping","Index","Productss", null, null)
 
-    shopping</a>
-
+    </div>
 </div>
